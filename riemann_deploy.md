@@ -8,3 +8,4 @@ riemann并没有提供分布式的解决方案，也没有高可用的方案，�
 那是不是就我们简单的把event打到不同的riemann实例就行了？当然不行，不同的实例里面的状态是独立的，如果你的某个服务的event的处理需要一些其他event来提供信息，那么这个处理就乱套了。
 简单来说，就是一套服务要对应两个riemann实例。
 假设你有两个不同的服务集群A,B，那么你应该让A集群的机器持续地往riemannA发event，B持续地往riemannB发event，而且为了保证高可用，你应该还有一个riemannA1和riemannB1, 即一个集群往两个riemann实例发数据，其中一个实例关闭告警等功能，另一个开启告警功能，如果开启告警功能的riemann实例挂掉了，马上把另一台的告警功能开启就好了。因为两个实例的状态是一样的，所以告警不会有什么问题。
+这里有一个[实践](https://www.instaclustr.com/blog/2016/05/03/post-500-nodes-high-availability-scalability-with-riemann).
