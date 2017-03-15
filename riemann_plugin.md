@@ -15,3 +15,5 @@
 第三步就是需要让riemann找的到你的jar包，riemann在jar包里面寻找riemann_plugin下面的edn文件，然后会读取里面的内容去找代码。
 
 最后，哦，其实是四步，在riemann.config 开头加上一句 (load-plugins)。
+
+另外，0.2.12版本已经内置支持kafka了。
